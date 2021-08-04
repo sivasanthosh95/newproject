@@ -1,0 +1,29 @@
+{
+  "posts": [
+    {
+      "name": "manoj",
+      "email": "abc@gmail.com",
+      "mobileno": 45352313,
+      "salary": 212121,
+      "id": 2
+    },
+    {
+      "name": "naveen",
+      "email": "abc@gmail.com",
+      "mobileno": 53534231,
+      "salary": 121212,
+      "id": 3
+    },
+    {
+      "name": "santhosh",
+      "email": "abc@gmail.com",
+      "mobileno": 3441212,
+      "salary": 2121,
+      "id": 7
+    }
+  ],
+  "comments": [],
+  "profile": {
+    "name": "typicode"
+  }
+}

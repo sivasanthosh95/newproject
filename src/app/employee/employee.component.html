@@ -1,0 +1,75 @@
+<nav class="navbar navbar-light bg-secondary">
+    <div class="container-fluid">
+        <h3 class="text-white">EmployeeForm</h3>
+        <div class="d-flex">
+            <button class="btn btn-success" (click)='hideupdatebutton()'type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Employee</button>
+        </div> 
+    </div>
+</nav>
+<table class="table table-bordered">
+    <tr>
+        <th scope="col"> Employeeid</th>
+        <th scope="col"> Name</th>
+        <th scope="col"> Email</th>
+        <th scope="col"> Mobileno</th>
+        <th scope="col"> Salary</th>
+        <th scope="col"> Action</th>
+    </tr>
+    <tbody>
+        <tr *ngFor='let row of employeedata'>
+            <td>{{row.id}}</td>
+            <td>{{row.name}}</td>
+            <td>{{row.email}}</td>
+            <td>{{row.mobileno}}</td>
+            <td>{{row.salary}}</td>
+            <td>
+                <button type="button" data-bs-toggle="modal" (click)='onedit(row)'data-bs-target="#exampleModal"class="btn btn-warning">Edit</button>
+                <button type="button" (click)='deleteemp(row)'class="btn btn-danger mx-3">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" data-keyborad="false" data-backdrop="static" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Employee Details</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]='employeevalue'>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Name</label>
+                  <input  type="text" class="form-control" formControlName='name' id="exampleInputEmail1" aria-describedby="emailHelp">
+                  <span class="text-danger" *ngIf="!employeevalue.controls['name'].valid && employeevalue.controls['name'].touched">Please fillout this field....!</span>
+                </div>
+             
+                <div class="mb-3">
+                  <label class="form-check-label" for="exampleCheck1">Email ID</label>
+                  <input type="email" class=" form-control" formControlName='email'id="exampleCheck1">
+                  <span class="text-danger" *ngIf="!employeevalue.controls['name'].valid && employeevalue.controls['name'].touched">Please fillout this field....!</span>
+                 
+                </div> 
+                <div class="mb-3">
+                  <label class="form-check-label" for="exampleCheck1">Mobile No</label>
+                  <input type="number" class="form-control" formControlName='mobileno' id="exampleCheck1">
+                  <span class="text-danger" *ngIf="!employeevalue.controls['name'].valid && employeevalue.controls['name'].touched">Please fillout this field....!</span>
+                 
+                </div>
+                <div class="mb-3">
+                  <label class="form-check-label" for="exampleCheck1">Salary</label>
+                  <input type="number" class=" form-control"formControlName='salary' id="exampleCheck1"> 
+                  <span class="text-danger" *ngIf="!employeevalue.controls['name'].valid && employeevalue.controls['name'].touched">Please fillout this field....!</span>
+                </div>  
+              </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" *ngIf='showsubmit'(click)='postemp()'class="btn btn-primary">Submit</button>
+          <button type="button" *ngIf='showupdate'(click)=' updateemp()'class="btn btn-warning">Update</button>
+        </div>
+      </div>
+    </div>
+  </div>
